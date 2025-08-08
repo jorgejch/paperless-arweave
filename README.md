@@ -9,9 +9,9 @@ Paperless-Arweave extends Paperless-ngx by storing post-processed documents in t
 ## 🛠️ Tech Stack
 
 ### Backend
-- TypeScript with Nest.js framework
+
+- TypeScript with Express.js framework
 - Integration with Paperless-ngx REST API
-- Arweave Wander wallet.
 
 ### Frontend
 - TypeScript with React.js
@@ -19,6 +19,7 @@ Paperless-Arweave extends Paperless-ngx by storing post-processed documents in t
 - Has an interface for viewing documents on Arweave and downloading them.
 - Has an interface for viewing the Arweave transaction ID for a document.
 - Has logic to fetch the user's public key from their wallet.
+- Arweave Wander wallet.
 
 ## 🔒 Security Features
 
@@ -31,9 +32,10 @@ Paperless-Arweave extends Paperless-ngx by storing post-processed documents in t
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v16+)
+
+- Node.js (v22+)
 - Paperless-ngx instance running
-- Arweave wallet
+- Arweave Wander wallet
 - Docker and Docker Compose (for running alongside Paperless-ngx)
 
 ### Installation
