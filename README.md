@@ -11,17 +11,22 @@ Paperless-Arweave extends Paperless-ngx by storing post-processed documents in t
 ### Backend
 - TypeScript with Nest.js framework
 - Integration with Paperless-ngx REST API
-- Arweave integration via [Irys](https://arweave-tools.irys.xyz/)
+- Arweave Wander wallet.
 
 ### Frontend
 - TypeScript with React.js
 - Document management interface
+- Has an interface for viewing documents on Arweave and downloading them.
+- Has an interface for viewing the Arweave transaction ID for a document.
+- Has logic to fetch the user's public key from their wallet.
 
 ## 🔒 Security Features
 
-- Client-side encryption using AES-256 before uploading to Arweave
-- Secure key management for document encryption/decryption
-- All data on Arweave is encrypted by default
+- Hybrid encryption approach for secure document storage
+- Files are encrypted server-side using a unique AES-256 key per file
+- The AES key is encrypted (wrapped) using the user’s Wander/Arweave wallet public key (RSA-OAEP)
+- Both the wrapped AES key and the ciphertext are stored on Arweave
+- Decryption requires the user’s private key in their wallet
 
 ## 🚀 Getting Started
 
@@ -63,10 +68,12 @@ services:
   paperless:
     environment:
       - PAPERLESS_POST_CONSUME_SCRIPT=/usr/src/paperless/scripts/post-consume.sh
-      - ARWEAVE_ENCRYPTION_KEY=your-super-secret-encryption-key-goes-here
     volumes:
       - ./post-consume.sh:/usr/src/paperless/scripts/post-consume.sh:ro
 ```
+
+1. Note that the system requires the user's wallet public key, which can be obtained via wallet connection or derived
+   from an on-chain transaction.
 
 1. Restart your Paperless-ngx container: `docker-compose restart paperless`
 
@@ -82,9 +89,9 @@ Paperless-Arweave consists of three main components:
 
 Since data on Arweave is publicly available by default, Paperless-Arweave implements robust encryption:
 
-- Documents are encrypted client-side before being uploaded
-- Encryption keys are never stored on Arweave
-- Only authorized users with the decryption key can access document contents
+- Encryption happens server-side before uploading documents
+- No symmetric keys are stored on the server; only the user’s public key and encrypted data are stored
+- Only the intended wallet owner can decrypt the AES key and access document contents
 
 ## 📄 License
 
