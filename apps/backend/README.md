@@ -1,4 +1,4 @@
-# Paperless-Arweave Backend
+# Paperless-Arweave backend
 
 ## Overview
 
@@ -21,6 +21,6 @@ with Paperless-ngx so it can run alongside existing deployments or in a containe
 
 ## Prerequisites
 
-- Node.js >= 18
+- Node.js 22+
 - npm
 - PostgreSQL

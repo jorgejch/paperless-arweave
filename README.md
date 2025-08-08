@@ -10,16 +10,11 @@ Paperless-Arweave extends Paperless-ngx by storing post-processed documents in t
 
 ### Backend
 
-- TypeScript with Express.js framework
-- Integration with Paperless-ngx REST API
+View the backend README.md [here](apps/backend/README.md).
 
 ### Frontend
-- TypeScript with React.js
-- Document management interface
-- Has an interface for viewing documents on Arweave and downloading them.
-- Has an interface for viewing the Arweave transaction ID for a document.
-- Has logic to fetch the user's public key from their wallet.
-- Arweave Wander wallet.
+
+View the frontend README.md [here](apps/frontend/README.md).
 
 ## 🔒 Security Features
 
